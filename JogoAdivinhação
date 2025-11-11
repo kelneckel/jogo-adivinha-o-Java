@@ -1,0 +1,30 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class JogoAdivinhação {
+    public static void main (String[] args){
+        Scanner leitor = new Scanner(System.in);
+        int numeroGerado = new Random().nextInt(100);
+        int tentativas = 0;
+        int numeroDigitado = 0;
+
+        while (tentativas < 10) {
+            System.out.println("Digite um número até 100");
+            numeroDigitado = leitor.nextInt();
+            tentativas++;
+
+            if(numeroDigitado == numeroGerado) {
+                System.out.println("Parabéns, você acertou o número secreto em " + tentativas + " tentativas!");
+                break;
+            } else if (numeroDigitado < numeroGerado) {
+                System.out.println("O número secreto é MAIOR que o "+ numeroDigitado);
+            } else {
+                System.out.println("O número secreto é MENOR que o " + numeroDigitado);
+            }
+
+            if (tentativas == 10 && numeroDigitado != numeroGerado) {
+                System.out.println("Infelizmente você esgotou todas as tentativas! Tente outra vez!");
+            }
+        }
+    }
+}
